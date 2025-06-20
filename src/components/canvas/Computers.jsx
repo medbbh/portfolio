@@ -1,37 +1,15 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable no-unused-vars */
-import React, { Suspense, useEffect, useState } from 'react'
-import { Canvas, events } from '@react-three/fiber'
-import { OrbitControls, Preload, useGLTF, } from '@react-three/drei'
-// import { CanvasLoader } from '../Loader'
-
+import React, { useEffect, useState } from 'react'
 
 const Computers = (isMobile) => {
-  const computer = useGLTF('../../../public/desktop_pc/scene.gltf')
-
   return (
-    <mesh>
-      <hemisphereLight intensity={0.15} groundColor="black"></hemisphereLight>
-      <pointLight intensity={1} />
-      <spotLight 
-      position={[-20, 50, 10]}
-        ongle={0.12}
-        penumbra={1}
-        intensity={1}
-        castShadow
-        shadow-mapSize={1024}
-      />
-
-      <primitive
-        object={computer.scene}
-        scale={isMobile ? 0.75 : 0.5}
-        position={isMobile ? [0, -3.9, -2.2] : [0, -3.25, -1.5]}
-        rotation = {[-0.01, -0.1, -0.1]}
-        
-      />
-
-    </mesh>
-
+    <div className="w-full h-full flex items-center justify-center bg-gray-900 rounded-lg">
+      <div className="text-white text-center">
+        <h3 className="text-xl">3D Computer Model</h3>
+        <p className="text-gray-400">Three.js has been removed</p>
+      </div>
+    </div>
   )
 }
 
@@ -39,7 +17,6 @@ const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-
     const mediaQuery = window.matchMedia('(max-width:500px)');
     setIsMobile(mediaQuery.matches);
     
@@ -47,37 +24,16 @@ const ComputersCanvas = () => {
       setIsMobile(event.matches);
     }
 
-    mediaQuery.addEventListener('change',
-    handleMediaQueryChange);
-
-    mediaQuery.addEventListener('change',
-    handleMediaQueryChange);
+    mediaQuery.addEventListener('change', handleMediaQueryChange);
     return () => {
-      mediaQuery.removeEventListener('change',
-      handleMediaQueryChange);
+      mediaQuery.removeEventListener('change', handleMediaQueryChange);
     }
   },[])
 
-  
   return (
-    <Canvas
-      frameloop="demand"
-      shadows
-      camera={{ position: [20, 3, 5], fov: 25 }}
-      gl={{ preserveDrawingBuffer: true }}
-
-    >
-      <Suspense >
-        <OrbitControls
-          enableZoom={false}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
-        />
-        <Computers  isMobile={isMobile}/>
-      </Suspense>
-
-      <Preload all />
-    </Canvas>
+    <div className="w-full h-[500px]">
+      <Computers isMobile={isMobile}/>
+    </div>
   )
 }
 

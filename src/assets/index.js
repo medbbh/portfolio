@@ -14,7 +14,7 @@ import html from "./tech/html.png";
 import javascript from "./tech/javascript.png";
 import nodejs from "./tech/nodejs.png";
 import reactjs from "./tech/reactjs.png";
-import threejs from "./tech/threejs.svg";
+
 import angular from "./tech/angular.jpg";
 import bootstrap from "./tech/bootstrap.jpg";
 import laravel from "./tech/laravel.png";
@@ -43,7 +43,6 @@ export {
   angular,
   bootstrap,
   laravel,
-  threejs,
   syskat,
   home,
   una,

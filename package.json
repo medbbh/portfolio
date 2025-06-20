@@ -1,6 +1,5 @@
 {
   "homepage": ".",
-
   "name": "3d-portfolio",
   "private": true,
   "version": "0.0.0",
@@ -17,19 +16,16 @@
     "@babel/core": "^7.23.3",
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
-    "@emailjs/browser": "^3.11.0",
-    "@react-three/drei": "^9.74.10",
-    "@react-three/fiber": "^8.13.2",
+    "@emailjs/browser": "^3.12.1",
     "babel-cli": "^6.26.0",
-    "framer-motion": "^10.12.16",
-    "maath": "^0.6.0",
+    "framer-motion": "^10.18.0",
+    "lucide-react": "^0.518.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.12.1",
     "react-tilt": "^1.0.2",
     "react-vanilla-tilt": "^1.0.0",
-    "react-vertical-timeline-component": "^3.6.0",
-    "three": "^0.153.0"
+    "react-vertical-timeline-component": "^3.6.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

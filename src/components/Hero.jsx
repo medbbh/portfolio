@@ -2,48 +2,130 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { styles } from '../styles'
-import { ComputersCanvas } from './canvas'
- 
 
 const Hero = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.2
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  }
+
+  const nameVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 1,
+        ease: "easeOut",
+        delay: 0.5
+      }
+    }
+  }
+
+  const badgeVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  }
+
+  const buttonVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    },
+    hover: {
+      scale: 1.05,
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut"
+      }
+    },
+    tap: {
+      scale: 0.95
+    }
+  }
+
   return (
-    <section className='relative w-full h-screen mx-auto'>
-      <div className={`${styles.paddingX} absolute inset-0 top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5 `}>
+    <section className='w-full min-h-screen flex items-center justify-center bg-primary'>
+      <div className={`${styles.paddingX} ${styles.container}`}>
+        <motion.div 
+          className="text-center space-y-6"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          
+          <motion.div variants={badgeVariants}>
+            <div className="inline-block bg-accent/20 text-accent-light px-4 py-2 rounded-full text-sm mb-6">
+              🏆 Supabase Launch Week 14 Winner
+            </div>
+          </motion.div>
 
-        <div className='flex flex-col justify-center items-center mt-5'>
-          <div className='w-5 h-5 rounded-full bg-[#9164ff]' />
-            <div className='w-1 sm:h-80 h-40 violet-gradient' />
+          <motion.h1 
+            className="text-4xl md:text-6xl font-bold text-white mb-4"
+            variants={itemVariants}
+          >
+            Hi, I'm{' '}
+            <motion.span 
+              className="text-accent"
+              variants={nameVariants}
+            >
+              Mohamed
+            </motion.span>
+          </motion.h1>
+          
+          <motion.p 
+            className="text-xl text-gray-300 max-w-2xl mx-auto mb-8"
+            variants={itemVariants}
+          >
+            Full-Stack Developer at Next Technology. I build modern web applications 
+            with React, Django, and AI integration.
+          </motion.p>
 
-        </div>
-        <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>Hi, I&apos;m <span className='text-[#915eff]'>Mohamed</span></h1>
-          <p className={`${styles.heroSubText}`}>Web developer</p>
-        </div>
-      </div>
-
-{/*       <ComputersCanvas /> */}
-
-      <div className='absolute xs:bottom-10 bottom-32 
-      w-full flex justify-center items-center'>
-        <a href='#about'>
-          <div className='w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2'>
-            <motion.dev 
-            animate={{
-              y: [0, 24, 0]
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              repeatType:'loop'
-            }}
-            className='w-3 h-3 rounded-full bg-secondary mb-1'
-            />
-          </div>
-        
-        </a>
-
-      
-
+          <motion.div 
+            className="flex justify-center"
+            variants={itemVariants}
+          >
+            <motion.a
+              href="#projects"
+              className="bg-accent hover:bg-accent-dark text-white px-6 py-3 rounded-lg transition-colors"
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+            >
+              View Projects
+            </motion.a>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )
